@@ -1,9 +1,11 @@
 package fr.xebia.essentials;
 
 import javafx.application.Application;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -18,11 +20,19 @@ public class Main extends Application {
     }
 
     private void initPrimaryStage(Stage primaryStage) {
+        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
+        double height = bounds.getHeight() * 0.8;
+        double width = height * 0.7;
+        primaryStage.setWidth(width);
+        primaryStage.setHeight(height);
+        primaryStage.setX(bounds.getMinX());
+        primaryStage.setY(bounds.getMinY());
+
         primaryStage.setTitle("Xebia Essentials");
         Button button = new Button("Click me");
         button.setOnAction(event -> System.out.println("Clicked!"));
         StackPane root = new StackPane(button);
-        primaryStage.setScene(new Scene(root, 320, 200));
+        primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
 }
