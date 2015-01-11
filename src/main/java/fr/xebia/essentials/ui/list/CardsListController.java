@@ -31,7 +31,7 @@ public class CardsListController implements Initializable {
     }
 
     private void setListView() {
-        List<Card> cards = JsonData.getDataFromJsonFile().getCards();
+        List<Card> cards = Context.INSTANCE.getCards();
         observableList.setAll(cards.stream().filter(card -> !card.isDeprecated()).collect(Collectors.toList()));
         listView.setItems(observableList);
         listView.setCellFactory(param -> new CardsListItem());

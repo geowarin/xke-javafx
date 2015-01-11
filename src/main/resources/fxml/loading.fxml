@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.StackPane?>
+<StackPane xmlns="http://javafx.com/javafx/8"
+           prefHeight="90" prefWidth="250">
+    <ProgressBar prefWidth="200"/>
+</StackPane>
