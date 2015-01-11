@@ -27,5 +27,6 @@ public class CardsListController implements Initializable {
         List<Card> cards = JsonData.getDataFromJsonFile().getCards();
         observableList.setAll(cards.stream().filter(card -> !card.isDeprecated()).collect(Collectors.toList()));
         listView.setItems(observableList);
+        listView.setCellFactory(param -> new CardsListItem());
     }
 }
