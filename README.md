@@ -1,8 +1,10 @@
 # XKE JavaFX
 
-## How to
+## Steps
 
-- Run mock server
+[https://github.com/Nilhcem/xke-javafx/wiki](https://github.com/Nilhcem/xke-javafx/wiki)
+
+## Run the mock server (if necessary)
 
 ```bash
 cd server
