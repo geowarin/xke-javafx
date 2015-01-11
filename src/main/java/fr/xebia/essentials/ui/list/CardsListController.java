@@ -36,6 +36,7 @@ public class CardsListController implements Initializable {
 
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             try {
+                Context.INSTANCE.setSelectedCard(newValue);
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/card_detail.fxml"));
                 Context.INSTANCE.getPrimaryStage().setScene(new Scene(root));
             } catch (IOException e) {
