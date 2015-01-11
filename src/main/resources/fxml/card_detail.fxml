@@ -4,9 +4,14 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
+<?import java.net.URL?>
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="fr.xebia.essentials.ui.detail.CardDetailController">
     <Label maxWidth="Infinity" alignment="CENTER" text="Second screen" fx:id="cardTitle"/>
     <WebView maxWidth="Infinity" maxHeight="Infinity" VBox.vgrow="ALWAYS" fx:id="cardDetail"/>
     <Button maxWidth="Infinity" text="Back" onAction="#goBack"/>
+
+    <stylesheets>
+        <URL value="@/css/card_detail.css"/>
+    </stylesheets>
 </VBox>

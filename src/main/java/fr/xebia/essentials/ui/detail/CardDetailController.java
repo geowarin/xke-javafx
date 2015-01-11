@@ -2,6 +2,7 @@ package fr.xebia.essentials.ui.detail;
 
 import fr.xebia.essentials.core.Context;
 import fr.xebia.essentials.model.Card;
+import fr.xebia.essentials.model.Category;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class CardDetailController implements Initializable {
@@ -23,8 +25,13 @@ public class CardDetailController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Card card = Context.INSTANCE.getSelectedCard();
+        String categoryColor = Category.getColorForCategory(card.getCategory());
+
         cardTitle.setText(card.getTitle());
-        cardDetail.getEngine().loadContent(card.getDescription());
+        cardTitle.setStyle("-fx-background-color: " + categoryColor);
+        cardDetail.getEngine().loadContent(String.format(Locale.US,
+                "<html><head><style>a, h1, h2, h3 { color: %s }</style><body>%s</body></html>",
+                categoryColor, card.getDescription()));
     }
 
     public void goBack(ActionEvent actionEvent) throws IOException {
