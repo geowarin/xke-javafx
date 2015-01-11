@@ -1,0 +1,22 @@
+apply plugin: 'java'
+apply from: 'http://dl.bintray.com/content/shemnon/javafx-gradle/0.4.0/javafx.plugin'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+javafx {
+    appID 'EssentialsApp'
+    appName 'Xebia Essentials JavaFX Application'
+    mainClass 'fr.xebia.essentials.Main'
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.3.1'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:1.7.1'
+}

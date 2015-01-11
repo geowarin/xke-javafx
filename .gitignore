@@ -1,0 +1,33 @@
+# Temporary files
+*~
+\#*#
+tmp/
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+
+# Gradle files
+.gradle/
+build/
+
+# IntelliJ
+*.iml
+*.iws
+*.ipr
+.idea/
+
+# OSX files
+.DS_Store
+
+# Windows files
+Thumbs.db
+
+# Backup files
+*.bak
+
+# NodeJS modules
+node_modules/

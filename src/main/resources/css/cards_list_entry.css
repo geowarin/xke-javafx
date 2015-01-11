@@ -1,0 +1,19 @@
+.category-1 {
+    -fx-text-fill: #F80068;
+    -fx-background-color: #FFEAF0;
+}
+
+.category-2 {
+    -fx-text-fill: #FC7A25;
+    -fx-background-color: #FDF2E9;
+}
+
+.category-3 {
+    -fx-text-fill: #107FD5;
+    -fx-background-color: #DFE6EC;
+}
+
+.category-4 {
+    -fx-text-fill: #6DC726;
+    -fx-background-color: #EDF4E7;
+}
