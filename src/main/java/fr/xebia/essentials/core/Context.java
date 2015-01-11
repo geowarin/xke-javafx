@@ -2,6 +2,7 @@ package fr.xebia.essentials.core;
 
 import fr.xebia.essentials.model.Card;
 import javafx.stage.Stage;
+import retrofit.RestAdapter;
 
 import java.util.List;
 
@@ -11,6 +12,17 @@ public enum Context {
     private Stage primaryStage;
     private List<Card> cards;
     private Card selectedCard;
+    private XebiaEssentialsApi api;
+
+    private Context() {
+        initRestClient();
+    }
+
+    private void initRestClient() {
+        RestAdapter.Builder builder = new RestAdapter.Builder();
+        RestAdapter adapter = builder.setEndpoint("https://raw.githubusercontent.com").build();
+        api = adapter.create(XebiaEssentialsApi.class);
+    }
 
     public Stage getPrimaryStage() {
         return primaryStage;
@@ -34,5 +46,9 @@ public enum Context {
 
     public void setSelectedCard(Card selectedCard) {
         this.selectedCard = selectedCard;
+    }
+
+    public XebiaEssentialsApi getApi() {
+        return api;
     }
 }

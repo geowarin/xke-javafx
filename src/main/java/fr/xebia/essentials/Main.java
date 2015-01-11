@@ -47,8 +47,7 @@ public class Main extends Application {
         Task<JsonData> task = new Task<JsonData>() {
             @Override
             protected JsonData call() throws Exception {
-                Thread.sleep(4000);
-                return JsonData.getDataFromJsonFile();
+                return Context.INSTANCE.getApi().getCards();
             }
         };
         task.setOnFailed(event -> progressBar.close());
