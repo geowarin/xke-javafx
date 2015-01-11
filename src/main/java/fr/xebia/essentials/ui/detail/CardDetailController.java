@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.web.WebView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -17,11 +18,13 @@ import java.util.ResourceBundle;
 public class CardDetailController implements Initializable {
 
     @FXML Label cardTitle;
+    @FXML WebView cardDetail;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Card card = Context.INSTANCE.getSelectedCard();
         cardTitle.setText(card.getTitle());
+        cardDetail.getEngine().loadContent(card.getDescription());
     }
 
     public void goBack(ActionEvent actionEvent) throws IOException {
