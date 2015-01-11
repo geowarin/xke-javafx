@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import java.net.URL?>
 <Label xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-       maxWidth="Infinity" fx:id="cardTitle"/>
+       maxWidth="Infinity" fx:id="cardTitle">
+    <stylesheets>
+        <URL value="@/css/cards_list_entry.css"/>
+    </stylesheets>
+</Label>

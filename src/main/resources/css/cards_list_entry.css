@@ -1,3 +1,8 @@
+.default {
+    -fx-font-size: 22px;
+    -fx-padding: 40px 20px;
+}
+
 .category-1 {
     -fx-text-fill: #F80068;
     -fx-background-color: #FFEAF0;

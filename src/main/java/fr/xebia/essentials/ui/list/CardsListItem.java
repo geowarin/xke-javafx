@@ -33,6 +33,9 @@ public class CardsListItem extends ListCell<Card> {
             setGraphic(null);
         } else {
             cardTitle.setText(item.getTitle());
+            cardTitle.getStyleClass().clear();
+            cardTitle.getStyleClass().add("default");
+            cardTitle.getStyleClass().add("category-" + item.getCategory());
             setGraphic(root);
         }
     }
