@@ -3,6 +3,7 @@ package fr.xebia.essentials.ui.list;
 import fr.xebia.essentials.core.Context;
 import fr.xebia.essentials.model.Card;
 import fr.xebia.essentials.model.JsonData;
+import javafx.animation.ScaleTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -11,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,13 +37,19 @@ public class CardsListController implements Initializable {
         listView.setCellFactory(param -> new CardsListItem());
 
         listView.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            try {
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(1000), listView);
+            scaleTransition.setToX(2f);
+            scaleTransition.setToY(2f);
+            scaleTransition.setOnFinished(e -> {
                 Context.INSTANCE.setSelectedCard(newValue);
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/card_detail.fxml"));
-                Context.INSTANCE.getPrimaryStage().setScene(new Scene(root));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/fxml/card_detail.fxml"));
+                    Context.INSTANCE.getPrimaryStage().setScene(new Scene(root));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
+            scaleTransition.play();
         });
     }
 }
