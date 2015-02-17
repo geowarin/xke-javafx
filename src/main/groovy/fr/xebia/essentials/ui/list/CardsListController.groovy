@@ -18,32 +18,32 @@ import javafx.util.Duration
 class CardsListController implements Initializable {
 
     @FXML
-    private ListView<Card> listView;
-    private ObservableList<Card> observableList = FXCollections.observableArrayList();
+    private ListView<Card> listView
+    private ObservableList<Card> observableList = FXCollections.observableArrayList()
 
     @Override
     void initialize(URL location, ResourceBundle resources) {
-        setListView();
+        setListView()
     }
 
     private void setListView() {
         List<Card> cards = Context.INSTANCE.getCards();
         observableList.setAll(cards.findAll { card -> !card.deprecated })
-        listView.setItems(observableList);
-        listView.setCellFactory({ param -> new CardsListItem() })
+        listView.items = observableList
+        listView.cellFactory = { param -> new CardsListItem() }
 
         ChangeListener<Card> changeListener = { observable, oldValue, newValue ->
-            ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(1000), listView);
-            scaleTransition.setToX(2f);
-            scaleTransition.setToY(2f);
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(1000), listView)
+            scaleTransition.toX = 2f
+            scaleTransition.toY = 2f
 
-            scaleTransition.setOnFinished({ ActionEvent e ->
-                Context.INSTANCE.selectedCard = newValue;
-                Parent root = FXMLLoader.load(getClass().getResource("/fxml/card_detail.fxml"));
+            scaleTransition.onFinished = { ActionEvent e ->
+                Context.INSTANCE.selectedCard = newValue
+                Parent root = FXMLLoader.load(getClass().getResource('/fxml/card_detail.fxml'))
                 Context.INSTANCE.primaryStage.scene = new Scene(root);
-            });
-            scaleTransition.play();
+            }
+            scaleTransition.play()
         }
-        listView.selectionModel.selectedItemProperty().addListener(changeListener);
+        listView.selectionModel.selectedItemProperty().addListener(changeListener)
     }
 }

@@ -34,15 +34,15 @@ class MyApplication {
     }
 
     private void initLoading(Stage primaryStage) throws IOException {
-        final Stage progressBar = openLoadingWindow();
+        Stage progressBar = openLoadingWindow()
 
         ExecutorService executorService = Executors.newSingleThreadExecutor()
         Task<JsonData> task = new Task<JsonData>() {
             protected JsonData call() throws Exception {
                 return Context.INSTANCE.api.cards;
             }
-        };
-        task.onFailed = { event -> progressBar.close() };
+        }
+        task.onFailed = { event -> progressBar.close() }
         task.onSucceeded = { workerStateEvent ->
             JsonData data = (JsonData) workerStateEvent.source.value
             Context.INSTANCE.cards = data.cards
@@ -58,12 +58,12 @@ class MyApplication {
     }
 
     private Stage openLoadingWindow() throws IOException {
-        final Stage progressBar = new Stage();
-        progressBar.initModality(Modality.WINDOW_MODAL);
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/loading.fxml"));
-        progressBar.scene = new Scene(root);
-        progressBar.title = "Loading...";
-        progressBar.show();
-        return progressBar;
+        Stage progressBar = new Stage()
+        progressBar.initModality(Modality.WINDOW_MODAL)
+        Parent root = FXMLLoader.load(getClass().getResource('/fxml/loading.fxml'));
+        progressBar.scene = new Scene(root)
+        progressBar.title = "Loading..."
+        progressBar.show()
+        return progressBar
     }
 }

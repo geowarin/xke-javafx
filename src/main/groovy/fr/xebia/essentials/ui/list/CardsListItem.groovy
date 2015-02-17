@@ -24,16 +24,16 @@ class CardsListItem extends ListCell<Card> {
 
     @Override
     protected void updateItem(Card item, boolean empty) {
-        super.updateItem(item, empty);
+        super.updateItem(item, empty)
         if (empty) {
-            text = null;
-            graphic = null;
+            text = null
+            setGraphic(null)
         } else {
-            cardTitle.text = item.getTitle();
-            cardTitle.styleClass.clear();
-            cardTitle.styleClass.add("default");
-            cardTitle.styleClass.add("category-" + item.getCategory());
-            setGraphic(root);
+            cardTitle.text = item.title
+            cardTitle.styleClass.clear()
+            cardTitle.styleClass.add("default")
+            cardTitle.styleClass.add("category-" + item.category)
+            setGraphic(root) // Do not touch this. Magic setter
         }
     }
 }

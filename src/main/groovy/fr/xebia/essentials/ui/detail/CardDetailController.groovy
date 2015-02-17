@@ -18,20 +18,21 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 class CardDetailController implements Initializable {
-
-    @FXML Label cardTitle;
-    @FXML WebView cardDetail;
+    @FXML
+    Label cardTitle;
+    @FXML
+    WebView cardDetail;
 
     @Override
     void initialize(URL location, ResourceBundle resources) {
-        Card card = Context.INSTANCE.getSelectedCard();
-        String categoryColor = Category.getColorForCategory(card.getCategory());
+        Card card = Context.INSTANCE.selectedCard
+        String categoryColor = Category.getColorForCategory(card.category)
 
-        cardTitle.setText(card.getTitle());
-        cardTitle.setStyle("-fx-background-color: " + categoryColor);
-        cardDetail.getEngine().loadContent(String.format(Locale.US,
+        cardTitle.text = card.title;
+        cardTitle.style = "-fx-background-color: " + categoryColor;
+        cardDetail.engine.loadContent(String.format(Locale.US,
                 "<html><head><style>a, h1, h2, h3 { color: %s }</style><body>%s</body></html>",
-                categoryColor, card.getDescription()));
+                categoryColor, card.description));
     }
 
     void goBack(ActionEvent actionEvent) throws IOException {

@@ -21,6 +21,6 @@ enum Context {
     private void initRestClient() {
         RestAdapter.Builder builder = new RestAdapter.Builder();
         RestAdapter adapter = builder.setEndpoint('https://raw.githubusercontent.com').build();
-        api = adapter.create(XebiaEssentialsApi.class);
+        api = adapter.create(XebiaEssentialsApi);
     }
 }
