@@ -27,10 +27,10 @@ class MyApplication {
         Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
         double height = bounds.getHeight() * 0.8;
         double width = height * 0.7;
-        primaryStage.setWidth(width);
-        primaryStage.setHeight(height);
-        primaryStage.setX(bounds.getMinX());
-        primaryStage.setY(bounds.getMinY());
+        primaryStage.width = width;
+        primaryStage.height = height;
+        primaryStage.x = bounds.minX;
+        primaryStage.y = bounds.minY;
     }
 
     private void initLoading(Stage primaryStage) throws IOException {
@@ -39,30 +39,30 @@ class MyApplication {
         ExecutorService executorService = Executors.newSingleThreadExecutor()
         Task<JsonData> task = new Task<JsonData>() {
             protected JsonData call() throws Exception {
-                return Context.INSTANCE.getApi().getCards();
+                return Context.INSTANCE.api.cards;
             }
         };
         task.onFailed = { event -> progressBar.close() };
         task.onSucceeded = { workerStateEvent ->
-            JsonData data = (JsonData) workerStateEvent.getSource().getValue()
+            JsonData data = (JsonData) workerStateEvent.source.value
             Context.INSTANCE.cards = data.cards
 
-            Parent root = FXMLLoader.load(getClass().getResource("/fxml/cards_list.fxml"))
-            primaryStage.setTitle("Xebia Essentials")
-            primaryStage.setScene(new Scene(root))
+            Parent root = FXMLLoader.load(getClass().getResource('/fxml/cards_list.fxml'))
+            primaryStage.title = 'Xebia Essentials'
+            primaryStage.scene = new Scene(root)
             primaryStage.show()
             progressBar.close()
         }
-        executorService.submit(task);
-        executorService.shutdown();
+        executorService.submit(task)
+        executorService.shutdown()
     }
 
     private Stage openLoadingWindow() throws IOException {
         final Stage progressBar = new Stage();
         progressBar.initModality(Modality.WINDOW_MODAL);
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/loading.fxml"));
-        progressBar.setScene(new Scene(root));
-        progressBar.setTitle("Loading...");
+        progressBar.scene = new Scene(root);
+        progressBar.title = "Loading...";
         progressBar.show();
         return progressBar;
     }
