@@ -17,13 +17,13 @@ import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class CardDetailController implements Initializable {
+class CardDetailController implements Initializable {
 
     @FXML Label cardTitle;
     @FXML WebView cardDetail;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    void initialize(URL location, ResourceBundle resources) {
         Card card = Context.INSTANCE.getSelectedCard();
         String categoryColor = Category.getColorForCategory(card.getCategory());
 
@@ -34,8 +34,8 @@ public class CardDetailController implements Initializable {
                 categoryColor, card.getDescription()));
     }
 
-    public void goBack(ActionEvent actionEvent) throws IOException {
+    void goBack(ActionEvent actionEvent) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/cards_list.fxml"));
-        Context.INSTANCE.getPrimaryStage().setScene(new Scene(root));
+        Context.INSTANCE.primaryStage.scene = new Scene(root);
     }
 }

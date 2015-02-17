@@ -9,33 +9,30 @@ import javafx.scene.control.ListCell;
 
 import java.io.IOException;
 
-public class CardsListItem extends ListCell<Card> {
+class CardsListItem extends ListCell<Card> {
 
     private Parent root;
-    @FXML Label cardTitle;
+    @FXML
+    Label cardTitle;
 
-    public CardsListItem() {
+    CardsListItem() {
         super();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/cards_list_item.fxml"));
         fxmlLoader.setController(this);
-        try {
-            root = fxmlLoader.load();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        root = fxmlLoader.load();
     }
 
     @Override
     protected void updateItem(Card item, boolean empty) {
         super.updateItem(item, empty);
         if (empty) {
-            setText(null);
-            setGraphic(null);
+            text = null;
+            graphic = null;
         } else {
-            cardTitle.setText(item.getTitle());
-            cardTitle.getStyleClass().clear();
-            cardTitle.getStyleClass().add("default");
-            cardTitle.getStyleClass().add("category-" + item.getCategory());
+            cardTitle.text = item.getTitle();
+            cardTitle.styleClass.clear();
+            cardTitle.styleClass.add("default");
+            cardTitle.styleClass.add("category-" + item.getCategory());
             setGraphic(root);
         }
     }
