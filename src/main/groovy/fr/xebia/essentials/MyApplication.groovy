@@ -22,15 +22,15 @@ class MyApplication {
     }
 
     private void initPrimaryStage(Stage primaryStage) throws IOException {
-        Context.INSTANCE.setPrimaryStage(primaryStage);
+        Context.INSTANCE.primaryStage = primaryStage
 
-        Rectangle2D bounds = Screen.getPrimary().getVisualBounds();
-        double height = bounds.getHeight() * 0.8;
-        double width = height * 0.7;
-        primaryStage.width = width;
-        primaryStage.height = height;
-        primaryStage.x = bounds.minX;
-        primaryStage.y = bounds.minY;
+        Rectangle2D bounds = Screen.getPrimary().visualBounds
+        double height = bounds.height * 0.8
+        double width = height * 0.7
+        primaryStage.width = width
+        primaryStage.height = height
+        primaryStage.x = bounds.minX
+        primaryStage.y = bounds.minY
     }
 
     private void initLoading(Stage primaryStage) throws IOException {
@@ -60,7 +60,7 @@ class MyApplication {
     private Stage openLoadingWindow() throws IOException {
         Stage progressBar = new Stage()
         progressBar.initModality(Modality.WINDOW_MODAL)
-        Parent root = FXMLLoader.load(getClass().getResource('/fxml/loading.fxml'));
+        Parent root = FXMLLoader.load(getClass().getResource('/fxml/loading.fxml'))
         progressBar.scene = new Scene(root)
         progressBar.title = "Loading..."
         progressBar.show()
