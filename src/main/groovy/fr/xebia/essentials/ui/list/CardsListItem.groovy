@@ -10,16 +10,15 @@ import javafx.scene.control.ListCell;
 import java.io.IOException;
 
 class CardsListItem extends ListCell<Card> {
-
     private Parent root;
     @FXML
     Label cardTitle;
 
     CardsListItem() {
-        super();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/cards_list_item.fxml"));
-        fxmlLoader.setController(this);
-        root = fxmlLoader.load();
+        super()
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource('/fxml/cards_list_item.fxml'))
+        fxmlLoader.controller = this
+        root = fxmlLoader.load()
     }
 
     @Override

@@ -30,9 +30,7 @@ class CardDetailController implements Initializable {
 
         cardTitle.text = card.title;
         cardTitle.style = "-fx-background-color: " + categoryColor;
-        cardDetail.engine.loadContent(String.format(Locale.US,
-                "<html><head><style>a, h1, h2, h3 { color: %s }</style><body>%s</body></html>",
-                categoryColor, card.description));
+        cardDetail.engine.loadContent("<html><head><style>a, h1, h2, h3 { color: $categoryColor }</style><body>${card.description}</body></html>")
     }
 
     void goBack(ActionEvent actionEvent) throws IOException {

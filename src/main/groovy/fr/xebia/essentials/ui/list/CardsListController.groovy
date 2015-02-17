@@ -16,10 +16,9 @@ import javafx.scene.control.ListView;
 import javafx.util.Duration
 
 class CardsListController implements Initializable {
-
+    private ObservableList<Card> observableList = FXCollections.observableArrayList()
     @FXML
     private ListView<Card> listView
-    private ObservableList<Card> observableList = FXCollections.observableArrayList()
 
     @Override
     void initialize(URL location, ResourceBundle resources) {
@@ -27,7 +26,7 @@ class CardsListController implements Initializable {
     }
 
     private void setListView() {
-        List<Card> cards = Context.INSTANCE.getCards();
+        List<Card> cards = Context.INSTANCE.cards
         observableList.setAll(cards.findAll { card -> !card.deprecated })
         listView.items = observableList
         listView.cellFactory = { param -> new CardsListItem() }

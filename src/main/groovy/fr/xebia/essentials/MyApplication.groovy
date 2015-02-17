@@ -39,7 +39,7 @@ class MyApplication {
         ExecutorService executorService = Executors.newSingleThreadExecutor()
         Task<JsonData> task = new Task<JsonData>() {
             protected JsonData call() throws Exception {
-                return Context.INSTANCE.api.cards;
+                Context.INSTANCE.api.cards
             }
         }
         task.onFailed = { event -> progressBar.close() }
